@@ -93,6 +93,7 @@
     <ClCompile Include="src\rendering\buffers\arrayBuffer.cpp" />
     <ClCompile Include="src\rendering\buffers\indexBuffer.cpp" />
     <ClCompile Include="src\rendering\buffers\vertexBuffer.cpp" />
+    <ClCompile Include="src\rendering\mesh.cpp" />
     <ClCompile Include="src\rendering\renderer.cpp" />
     <ClCompile Include="src\rendering\shader.cpp" />
     <ClCompile Include="src\rendering\window.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="src\rendering\buffers\arrayBuffer.h" />
     <ClInclude Include="src\rendering\buffers\indexBuffer.h" />
     <ClInclude Include="src\rendering\buffers\vertexBuffer.h" />
+    <ClInclude Include="src\rendering\mesh.h" />
     <ClInclude Include="src\rendering\renderer.h" />
     <ClInclude Include="src\rendering\shader.h" />
     <ClInclude Include="src\rendering\window.h" />

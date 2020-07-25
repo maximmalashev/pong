@@ -33,35 +33,16 @@ int main()
 
 	shader->setMVP(model, view, projection);
 
-	/* Create buffers */
-	ArrayBuffer* vao = new ArrayBuffer();
-
-	float vertices[] = {
-		-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-		 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-		 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
-	};
-
-	std::vector<int> vboLayout;
-	vboLayout.push_back(3);
-	vboLayout.push_back(3);
-
-	VertexBuffer* vbo = new VertexBuffer(vertices, 18, vboLayout);
-	vao->attachVertexBuffer(*vbo);
-
-	unsigned int indices[] = {
-		0, 1, 2
-	};
-
-	IndexBuffer* ibo = new IndexBuffer(indices, 3);
-
+	/* Create mesh */
+	Mesh* mesh = Mesh::Rectangle(1.0f, 5.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+	
 	/* Main loop */
 	while (window.running())
 	{
 		glfwPollEvents();
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		Renderer::draw(*shader, *vao, *ibo);
+		Renderer::drawMesh(*shader, *mesh);
 
 		window.swapBuffers();
 	}

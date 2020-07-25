@@ -2,7 +2,7 @@
 
 #include "renderer.h"
 
-void Renderer::draw(Shader &shader, ArrayBuffer &vao, IndexBuffer &ibo)
+void Renderer::draw(Shader& shader, ArrayBuffer& vao, IndexBuffer& ibo)
 {
 	shader.use();
 	vao.bind();
@@ -12,4 +12,9 @@ void Renderer::draw(Shader &shader, ArrayBuffer &vao, IndexBuffer &ibo)
 
 	vao.unbind();
 	ibo.unbind();
+}
+
+void Renderer::drawMesh(Shader& shader, Mesh& mesh)
+{
+	draw(shader, *mesh.getVAO(), *mesh.getIBO());
 }
