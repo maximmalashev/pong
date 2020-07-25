@@ -16,6 +16,8 @@ public:
 	void setUniform1f(std::string location, float value);
 	void setUniformMat4(std::string location, glm::mat4 value);
 
+	void setMVP(glm::mat4 model, glm::mat4 view, glm::mat4 projection);
+
 private:
 	Shader();
 

@@ -2,9 +2,12 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "rendering/renderer.h"
 #include "rendering/shader.h"
+
+const float deg2rad = 3.14159265f / 180.0f;
 
 int main()
 {
@@ -47,7 +50,16 @@ int main()
 
 	/* Load resources */
 	Shader* shader = Shader::load("res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
-	shader->setUniform1f("testColor", 1.0f);
+
+	glm::mat4 model(1.0f);
+	model = glm::translate(model, glm::vec3(bufferWidth / 2, bufferHeight / 2, -1.0f));
+	model = glm::rotate(model, 0 * deg2rad, glm::vec3(0.0f, 0.0f, 1.0f));
+	model = glm::scale(model, glm::vec3(100.0f, 100.0f, 100.0f));
+
+	glm::mat4 view = glm::identity<glm::mat4>();
+	glm::mat4 projection = glm::ortho(0.0f, (float) bufferWidth, 0.0f, (float) bufferHeight, 0.1f, 100.0f);
+
+	shader->setMVP(model, view, projection);
 
 	ArrayBuffer* vao = new ArrayBuffer();
 

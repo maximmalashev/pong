@@ -1,8 +1,8 @@
 #include <GL/glew.h>
-#include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
 #include "../utils/fileUtils.h"
+#include <glm/gtc/type_ptr.hpp>
 
 #include "shader.h"
 
@@ -44,6 +44,13 @@ void Shader::setUniformMat4(std::string location, glm::mat4 value)
 	use();
 	int locationId = glGetUniformLocation(id, location.c_str());
 	glUniformMatrix4fv(locationId, 1, GL_FALSE, glm::value_ptr(value));	
+}
+
+void Shader::setMVP(glm::mat4 model, glm::mat4 view, glm::mat4 projection)
+{
+	setUniformMat4("model", model);
+	setUniformMat4("view", view);
+	setUniformMat4("projection", projection);
 }
 
 void Shader::compile(std::string vertexCode, std::string fragmentCode)
