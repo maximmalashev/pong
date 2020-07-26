@@ -25,12 +25,17 @@ public:
 
 	inline Mesh* getMesh() const { return mesh; }
 	inline Shader* getShader() const { return shader; }
+	inline unsigned int getId() const { return id; }
 
 	inline void setMesh(Mesh* mesh) { this->mesh = mesh; }
 	inline void setShader(Shader* shader) { this->shader = shader; }
 
+
 	~Entity();
 private:
+	static unsigned int idCounter;
+	unsigned int id;
+
 	Mesh* mesh;
 	Shader* shader;
 };

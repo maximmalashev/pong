@@ -7,10 +7,14 @@
 
 Entity::Entity() : mesh(nullptr), shader(nullptr)
 {
+	this->id = idCounter++;
+
 	transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 	transform.rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	transform.scale = glm::vec3(1.0f, 1.0f, 1.0f);
 }
+
+unsigned int Entity::idCounter = 1;
 
 void Entity::draw()
 {

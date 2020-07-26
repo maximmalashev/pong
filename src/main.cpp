@@ -26,7 +26,7 @@ int main()
 	/* Create mesh */
 	Mesh* mesh = Mesh::Rectangle(1.0f, 1.0f);
 
-	/* Create Paddles */
+	/* Create paddles */
 	Paddle* paddle1 = new Paddle();
 	paddle1->setMesh(mesh);
 	paddle1->setShader(shader);
@@ -44,20 +44,11 @@ int main()
 	paddle2->transform.scale.y = 70.0f;
 
 	paddle2->transform.position.x = 500.0f;
-	
-	/* Main loop */
-	while (Application::window->running())
-	{
-		glfwPollEvents();
 
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	/* Add paddles to the entity list */
+	Application::addEntity(paddle1);
+	Application::addEntity(paddle2);
 
-		paddle1->update();
-		paddle1->draw();
-
-		paddle2->update();
-		paddle2->draw();
-		
-		Application::window->swapBuffers();
-	}
+	/* Start the application */
+	Application::start();
 }
