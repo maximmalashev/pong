@@ -8,7 +8,7 @@
 #include "rendering/shader.h"
 #include "rendering/window.h"
 
-const float deg2rad = 3.14159265f / 180.0f;
+#include "game/orthographicCamera.h"
 
 int main()
 {
@@ -18,23 +18,19 @@ int main()
 	/* Load shaders */
 	Shader* shader = Shader::load("res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
 
+	/* Create camera */
+	OrthographicCamera* camera = new OrthographicCamera(0.1f, 100.0f);
+
 	/* Set up matrices */
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
 	model = glm::rotate(model, 0 * deg2rad, glm::vec3(0.0f, 0.0f, 1.0f));
 	model = glm::scale(model, glm::vec3(100.0f, 100.0f, 100.0f));
 
-	glm::mat4 view(1.0f);
-	view = glm::translate(view, glm::vec3(window.getBufferWidth() / 2, window.getBufferHeight() / 2, 0.0f));
-	view = glm::rotate(view, 0 * deg2rad, glm::vec3(0.0f, 0.0f, 1.0f));
-	view = glm::scale(view, glm::vec3(1.0f, 1.0f, 1.0f));
-
-	glm::mat4 projection = glm::ortho(0.0f, (float) window.getBufferWidth(), 0.0f, (float) window.getBufferHeight(), 0.1f, 100.0f);
-
-	shader->setMVP(model, view, projection);
+	shader->setMVP(model, camera->getViewMatrix(window.getBufferWidth(), window.getBufferHeight()), camera->getProjectionMatrix(window.getBufferWidth(), window.getBufferHeight()));
 
 	/* Create mesh */
-	Mesh* mesh = Mesh::Rectangle(1.0f, 5.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+	Mesh* mesh = Mesh::Rectangle(2.0f, 2.0f);
 	
 	/* Main loop */
 	while (window.running())
