@@ -21,7 +21,16 @@ public:
 	Transform transform;
 
 	virtual void update() = 0;
-	virtual void draw() = 0;
+	void draw();
+
+	inline Mesh* getMesh() const { return mesh; }
+	inline Shader* getShader() const { return shader; }
+
+	inline void setMesh(Mesh* mesh) { this->mesh = mesh; }
+	inline void setShader(Shader* shader) { this->shader = shader; }
 
 	~Entity();
+private:
+	Mesh* mesh;
+	Shader* shader;
 };

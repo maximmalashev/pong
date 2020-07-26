@@ -1,8 +1,8 @@
 #include <GL/glew.h>
 
 #include <iostream>
-#include "../utils/fileUtils.h"
 #include <glm/gtc/type_ptr.hpp>
+#include "../utils/fileUtils.h"
 
 #include "shader.h"
 
