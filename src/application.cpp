@@ -3,9 +3,13 @@
 
 Window* Application::window = nullptr;
 OrthographicCamera* Application::camera = nullptr;
+
 std::vector<Entity*> Application::entities;
+
 int Application::framerateCap = 60;
 int Application::actualFramerate = 0;
+
+float Application::deltaTime = 1.0f;
 
 Application::Application() { }
 
@@ -21,6 +25,21 @@ void Application::deleteEntity(unsigned int id)
 	}
 }
 
+void Application::handleKeyInput(GLFWwindow* window, int key, int code, int action, int mode)
+{
+	if (key >= 0 && key < 1024)
+	{
+		if (action == GLFW_PRESS)
+		{
+			Application::window->keys[key] = true;
+		}
+		else if (action == GLFW_RELEASE)
+		{
+			Application::window->keys[key] = false;
+		}
+	}
+}
+
 void Application::start()
 {
 	double lastTime = glfwGetTime();
@@ -31,7 +50,6 @@ void Application::start()
 	while (window->running())
 	{
 		double currentTime = glfwGetTime();
-		glfwPollEvents();
 
 		/* Framerate counter */
 		if (currentTime - lastFramerateTime >= 1.0)
@@ -40,7 +58,7 @@ void Application::start()
 			framesPassedLastSecond = 0;
 			lastFramerateTime = currentTime;
 		
-			window->AddToTitle(" | " + std::to_string(actualFramerate) + " fps");
+			window->addToTitle(" | " + std::to_string(actualFramerate) + " fps");
 		}
 
 		for (const auto& entity : entities)
@@ -50,17 +68,23 @@ void Application::start()
 
 		if (currentTime - lastTime >= (1.0 / (double) framerateCap))
 		{
+			glfwPollEvents();
+
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			for (const auto& entity : entities)
 			{
 				entity->frameUpdate();
 				entity->draw();
 			}
-			window->swapBuffers();
+
+			deltaTime = currentTime - lastTime;
+
+			window->swapBuffers();	
 
 			lastTime = currentTime;
 			framesPassedLastSecond++;
-		} 
+		}
+
 	}
 }
 

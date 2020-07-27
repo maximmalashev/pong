@@ -15,12 +15,15 @@ public:
 	inline int getBufferWidth() const { return bufferWidth; }
 	inline int getBufferHeight() const { return bufferHeight; }
 	inline std::string getTitle() const { return title; }
+	inline GLFWwindow* getGLFWwindow() const { return window; }
 	
-	void AddToTitle(std::string title);
-	
+	void addToTitle(std::string title);
+	void setKeyInput(GLFWkeyfun callback);
+
 	inline bool running() const { return !glfwWindowShouldClose(window); }
 	inline void swapBuffers() { glfwSwapBuffers(window); }
 
+	bool keys[1024];
 
 	~Window();
 private:

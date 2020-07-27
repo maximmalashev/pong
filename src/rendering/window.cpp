@@ -38,11 +38,19 @@ Window::Window(int width, int height, std::string title)
 	glEnable(GL_DEPTH_TEST);
 	glViewport(0, 0, bufferWidth, bufferHeight);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0);
+
+	for (int i = 0; i < 1024; i++)
+		keys[i] = 0;
 }
 
-void Window::AddToTitle(std::string title)
+void Window::addToTitle(std::string title)
 {
 	glfwSetWindowTitle(window, (this->title + title).c_str());
+}
+
+void Window::setKeyInput(GLFWkeyfun callback)
+{
+	glfwSetKeyCallback(window, callback);
 }
 
 Window::~Window() { }

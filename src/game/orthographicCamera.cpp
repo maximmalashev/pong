@@ -3,7 +3,6 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-
 OrthographicCamera::OrthographicCamera(float near, float far) : near(near), far(far) { }
 
 glm::mat4 OrthographicCamera::getProjectionMatrix()

@@ -20,6 +20,9 @@ int main()
 	Application::window = new Window(1080, 720, "Pong");
 	Application::camera = new OrthographicCamera(-1.0f, 100.0f);
 
+	/* Input set up */
+	Application::window->setKeyInput(Application::handleKeyInput);
+
 	/* Load shaders */
 	Shader* shader = Shader::load("res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
 
@@ -27,7 +30,7 @@ int main()
 	Mesh* mesh = Mesh::Rectangle(1.0f, 1.0f);
 
 	/* Create objects */
-	Paddle* paddle1 = new Paddle();
+	Paddle* paddle1 = new Paddle(true);
 	paddle1->setMesh(mesh);
 	paddle1->setShader(shader);
 
@@ -36,7 +39,7 @@ int main()
 
 	paddle1->transform.position.x = -500.0f;
 
-	Paddle* paddle2 = new Paddle();
+	Paddle* paddle2 = new Paddle(false);
 	paddle2->setMesh(mesh);
 	paddle2->setShader(shader);
 

@@ -5,10 +5,15 @@
 class Paddle : public Entity
 {
 public:
-	Paddle();
+	Paddle(bool left);
 
 	void update() override;
 	void frameUpdate() override;
 
+
+	static float moveSpeed;
+
 	~Paddle();
+private:
+	bool left;
 };
