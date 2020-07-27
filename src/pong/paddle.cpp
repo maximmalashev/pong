@@ -4,9 +4,15 @@
 
 #include <iostream>
 
-Paddle::Paddle(bool left) : left(left) { }
+Paddle::Paddle(bool left) : left(left), topCollider(0), downCollider(0) { }
 
-float Paddle::moveSpeed = 400.0f;
+float Paddle::moveSpeed = 600.0f;
+
+void Paddle::prepare()
+{
+	topCollider = Application::window->getBufferHeight() / 2 - transform.scale.y / 2;
+	downCollider = -Application::window->getBufferHeight() / 2 + transform.scale.y / 2;
+}
 
 void Paddle::update() { }
 void Paddle::frameUpdate() 
@@ -16,14 +22,17 @@ void Paddle::frameUpdate()
 
 	if (Application::window->keys[upKey]) 
 	{
-		transform.position.y += moveSpeed * Application::deltaTime;
+		if (transform.position.y < topCollider)
+			transform.position.y += moveSpeed * Application::deltaTime;
 	}
 
 	if (Application::window->keys[downKey])
 	{
-		transform.position.y -= moveSpeed * Application::deltaTime;
+		if (transform.position.y > downCollider)
+			transform.position.y -= moveSpeed * Application::deltaTime;
 	}
 
 }
+
 
 Paddle::~Paddle() { }

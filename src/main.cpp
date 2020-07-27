@@ -13,6 +13,7 @@
 #include "game/orthographicCamera.h"
 
 #include "pong/paddle.h"
+#include "pong/ball.h"
 
 int main()
 {
@@ -35,22 +36,36 @@ int main()
 	paddle1->setShader(shader);
 
 	paddle1->transform.scale.x = 10.0f;
-	paddle1->transform.scale.y = 70.0f;
+	paddle1->transform.scale.y = 100.0f;
 
 	paddle1->transform.position.x = -500.0f;
+
+	paddle1->prepare();
 
 	Paddle* paddle2 = new Paddle(false);
 	paddle2->setMesh(mesh);
 	paddle2->setShader(shader);
 
 	paddle2->transform.scale.x = 10.0f;
-	paddle2->transform.scale.y = 70.0f;
+	paddle2->transform.scale.y = 100.0f;
 
 	paddle2->transform.position.x = 500.0f;
+
+	paddle2->prepare();
+
+	Ball* ball = new Ball();
+	ball->setMesh(mesh);
+	ball->setShader(shader);
+
+	ball->transform.scale.x = 15.0f;
+	ball->transform.scale.y = 15.0f;
+
+	ball->prepare(paddle1, paddle2);
 
 	/* Add objects to the entity list */
 	Application::addEntity(paddle1);
 	Application::addEntity(paddle2);
+	Application::addEntity(ball);
 
 	/* Start the application */
 	Application::start();
