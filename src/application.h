@@ -18,6 +18,9 @@ public:
 
 	static std::vector<Entity*> entities;
 
+	static int framerateCap;
+	static int actualFramerate;
+
 	inline static void addEntity(Entity* entity) { entities.push_back(entity); }
 	static void deleteEntity(unsigned int id);
 	static void start();

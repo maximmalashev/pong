@@ -21,6 +21,7 @@ public:
 	Transform transform;
 
 	virtual void update() = 0;
+	virtual void frameUpdate() = 0;
 	void draw();
 
 	inline Mesh* getMesh() const { return mesh; }

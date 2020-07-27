@@ -8,6 +8,7 @@ public:
 	Paddle();
 
 	void update() override;
+	void frameUpdate() override;
 
 	~Paddle();
 };

@@ -15,8 +15,12 @@ public:
 	inline int getBufferWidth() const { return bufferWidth; }
 	inline int getBufferHeight() const { return bufferHeight; }
 	inline std::string getTitle() const { return title; }
+	
+	void AddToTitle(std::string title);
+	
 	inline bool running() const { return !glfwWindowShouldClose(window); }
 	inline void swapBuffers() { glfwSwapBuffers(window); }
+
 
 	~Window();
 private:

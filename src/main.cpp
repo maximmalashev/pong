@@ -26,7 +26,7 @@ int main()
 	/* Create mesh */
 	Mesh* mesh = Mesh::Rectangle(1.0f, 1.0f);
 
-	/* Create paddles */
+	/* Create objects */
 	Paddle* paddle1 = new Paddle();
 	paddle1->setMesh(mesh);
 	paddle1->setShader(shader);
@@ -45,7 +45,7 @@ int main()
 
 	paddle2->transform.position.x = 500.0f;
 
-	/* Add paddles to the entity list */
+	/* Add objects to the entity list */
 	Application::addEntity(paddle1);
 	Application::addEntity(paddle2);
 

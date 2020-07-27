@@ -32,4 +32,6 @@ glm::mat4 OrthographicCamera::getViewMatrix()
 
 void OrthographicCamera::update() { }
 
+void OrthographicCamera::frameUpdate() { }
+
 OrthographicCamera::~OrthographicCamera() { }

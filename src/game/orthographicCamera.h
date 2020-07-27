@@ -12,6 +12,7 @@ public:
 	glm::mat4 getViewMatrix();
 
 	void update() override;
+	void frameUpdate() override;
 
 	const float deg2rad = 3.14159265f / 180.0f;
 

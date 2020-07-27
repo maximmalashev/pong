@@ -40,4 +40,9 @@ Window::Window(int width, int height, std::string title)
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0);
 }
 
+void Window::AddToTitle(std::string title)
+{
+	glfwSetWindowTitle(window, (this->title + title).c_str());
+}
+
 Window::~Window() { }
