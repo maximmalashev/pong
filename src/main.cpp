@@ -12,6 +12,7 @@
 
 #include "game/orthographicCamera.h"
 
+#include "pong/gameManager.h"
 #include "pong/paddle.h"
 #include "pong/ball.h"
 
@@ -61,6 +62,9 @@ int main()
 	ball->transform.scale.y = 15.0f;
 
 	ball->prepare(paddle1, paddle2);
+
+	/* Game manager */
+	Application::manager = new GameManager(paddle1, paddle2, ball);
 
 	/* Add objects to the entity list */
 	Application::addEntity(paddle1);

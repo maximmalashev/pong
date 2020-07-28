@@ -94,6 +94,7 @@
     <ClCompile Include="src\game\orthographicCamera.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pong\ball.cpp" />
+    <ClCompile Include="src\pong\gameManager.cpp" />
     <ClCompile Include="src\pong\paddle.cpp" />
     <ClCompile Include="src\rendering\buffers\arrayBuffer.cpp" />
     <ClCompile Include="src\rendering\buffers\indexBuffer.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="src\game\orthographicCamera.h" />
     <ClInclude Include="src\game\entity.h" />
     <ClInclude Include="src\pong\ball.h" />
+    <ClInclude Include="src\pong\gameManager.h" />
     <ClInclude Include="src\pong\paddle.h" />
     <ClInclude Include="src\rendering\buffers\arrayBuffer.h" />
     <ClInclude Include="src\rendering\buffers\indexBuffer.h" />

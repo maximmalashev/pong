@@ -13,8 +13,14 @@ public:
 	void update() override;
 	void frameUpdate() override;
 
+	inline void setPassed(bool value) { passed = value; }
+
+	void resetVelocities();
+
 	~Ball();
 private:
+	float startXVelocity = 200.0f;
+
 	float xVelocity;
 	float yVelocity;
 

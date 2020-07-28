@@ -4,6 +4,7 @@
 
 #include "rendering/window.h"
 #include "game/orthographicCamera.h"
+#include "pong/gameManager.h"
 
 #include "game/entity.h"
 
@@ -15,6 +16,7 @@ public:
 
 	static Window* window;
 	static OrthographicCamera* camera;
+	static GameManager* manager;
 
 	static std::vector<Entity*> entities;
 

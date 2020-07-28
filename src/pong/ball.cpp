@@ -4,13 +4,13 @@
 #include <iostream>
 #include <cmath>
 
-float Ball::minXVelocity = 150.0f;
-float Ball::maxXVelocity = 250.0f;
-float Ball::minYVelocity = 150.0f;
-float Ball::maxYVelocity = 250.0f;
+float Ball::minXVelocity = 250.0f;
+float Ball::maxXVelocity = 350.0f;
+float Ball::minYVelocity = 250.0f;
+float Ball::maxYVelocity = 350.0f;
 
 Ball::Ball() 
-	: xVelocity(200.0f), yVelocity(0.0f), 
+	: xVelocity(startXVelocity), yVelocity(0.0f), 
 	  paddleLeft(nullptr), paddleRight(nullptr), 
 	  colliderLeft(0), colliderRight(0), colliderTop(0), colliderBottom(0) { }
 
@@ -47,8 +47,6 @@ void Ball::frameUpdate()
 	/* Change position */
 	transform.position.x += xDirection * xVelocity * Application::deltaTime;
 	transform.position.y += yDirection * yVelocity * Application::deltaTime;
-
-	std::cout << "passed: " << passed << std::endl;
 }
 
 
@@ -67,6 +65,12 @@ void Ball::wallBounce()
 	float tmp = xVelocity;
 	xVelocity = yVelocity;
 	yVelocity = tmp;
+}
+
+void Ball::resetVelocities()
+{
+	xVelocity = startXVelocity;
+	yVelocity = 0.0f;
 }
 
 void Ball::update() { }

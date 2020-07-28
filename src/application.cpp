@@ -3,6 +3,7 @@
 
 Window* Application::window = nullptr;
 OrthographicCamera* Application::camera = nullptr;
+GameManager* Application::manager = nullptr;
 
 std::vector<Entity*> Application::entities;
 
@@ -75,6 +76,8 @@ void Application::start()
 			{
 				entity->frameUpdate();
 				entity->draw();
+
+				manager->update();
 			}
 
 			deltaTime = currentTime - lastTime;
